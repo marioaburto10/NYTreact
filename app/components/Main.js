@@ -2,7 +2,7 @@
 var React = require("react");
 
 // bringing in subcomponents
-// var Search = require("./children/Search");
+var Search = require("./children/Search");
 // var Results = require("./children/Results");
 // var Saved = require("./children/Saved");
 
@@ -21,16 +21,16 @@ var Main = React.createClass({
   },
 
   // loads when page is ready
-  componentDidMount: function(){
-    // using helper to get saved articles
-    helpers.getSaved().then(function(resonse){
-      console.log(response);
-      if (response !== this.state.saved) {
-        console.log("Saved", response.data);
-        this.setState({ saved: response.data });
-      }
-    }.bind(this));
-  },
+  // componentDidMount: function(){
+  //   // using helper to get saved articles
+  //   helpers.getSaved().then(function(resonse){
+  //     console.log(response);
+  //     if (response !== this.state.saved) {
+  //       console.log("Saved", response.data);
+  //       this.setState({ saved: response.data });
+  //     }
+  //   }.bind(this));
+  // },
   // updating as changes occur
   componentDidUpdate: function(){
     // run query
@@ -67,8 +67,11 @@ var Main = React.createClass({
           </div>
         </div>
 
-      </div>
-    );
+        <div className="row col s12">
+          <Search search={this.setSearch} />
+        </div>
+
+      
   }
 });
 
