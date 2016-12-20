@@ -11,7 +11,7 @@ var helper= {
       var results = [];
       // if there is a result, return it formatted properly
       if (response.data.results[0]) {
-        for(var i=0, i<5, i++) {
+        for(var i=0; i<5; i++) {
           results.push(response.data.results[i].formatted);
         }
         return results;

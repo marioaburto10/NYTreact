@@ -9,7 +9,7 @@ var Article = require("../models/Article.js");
 // Index page
 router.get('/', function(req, res) {
 
-  res.send('Hello World');
+  res.sendFile(__dirname + "/public/index.html");
 });
 
 module.exports = router;

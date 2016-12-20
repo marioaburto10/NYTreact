@@ -31,7 +31,7 @@ db.once('open', function() {
 });
 
 // Require Article Schema
-var Article = require("./models/Article.js");
+var Article = require("./models/Article");
 
 // import routes
 var router = require('./controllers/controller.js');
