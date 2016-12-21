@@ -1,12 +1,13 @@
 // require axios
 var axios = require("axios");
 
-//NYT API key
-var nytAPI= "0f42d9432843478c87c46da4dfbebcc0";
+
 
 var helper= {
   runQuery: function(topic, startYear, endYear){
-    var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + nytAPI + "&q="+ topic + "&begin_date=" + startYear + "0101" + "&begin_date=" + endYear + "0231";
+    //NYT API key
+    var APIkey= "0f42d9432843478c87c46da4dfbebcc0";
+    var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + APIkey + "&q="+ topic + "&begin_date=" + startYear + "0101" + "&end_date=" + endYear + "1231";
     return axios.get(queryURL).then(function(response){
       var results = [];
       // if there is a result, return it formatted properly
@@ -25,10 +26,10 @@ var helper= {
     return axios.get('/api/saved');
   },
   postSaved: function(article){
-    return axios.post('/api/saved', article);
+    return axios.post('/api/saved', {title: title, date: date, url: url});
   },
   deleteSaved: function(id){
-    return axios.delete('api/saved' + id);
+    return axios.delete('api/saved/' + id);
   }
 };
 

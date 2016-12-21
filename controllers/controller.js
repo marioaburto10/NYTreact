@@ -32,7 +32,7 @@ router.post('/api/saved', function(req, res){
   });
 });
 
-router.delete('/api/saved', function(req, res){
+router.delete('/api/saved/:id', function(req, res){
   Article.findByIdAndRemove({ _id: req.params.id }, function(err, doc){
     if(err){console.log(err);}
     else{res.redirect();}
