@@ -3,8 +3,8 @@ var React = require("react");
 
 // bringing in subcomponents
 var Search = require("./children/Search");
-// var Results = require("./children/Results");
-// var Saved = require("./children/Saved");
+var Results = require("./children/Results");
+var Saved = require("./children/Saved");
 
 // Requiring our helper for API calls
 var helpers = require("./utils/helpers");
@@ -70,6 +70,15 @@ var Main = React.createClass({
         <div className="row col s12">
           <Search search={this.setSearch} />
         </div>
+
+        <div className="row col s12">
+          <Results results={this.state.results} />
+        </div>
+
+        <div className="row col s12">
+          <Saved saved={this.state.saved} />
+        </div>
+
       </div>
     );
   }
