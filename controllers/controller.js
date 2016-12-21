@@ -17,7 +17,7 @@ router.get('/api/saved', function(req, res){
     ["date", "descending"]
   ]).limit(5).exec(function(err, doc){
     if (err) {console.log(err);} 
-    else{res.send(doc):}
+    else{res.send(doc);}
   });
 });
 

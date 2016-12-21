@@ -24,11 +24,11 @@ var helper= {
   getSaved: function(){
     return axios.get('/api/saved');
   },
-  postSaved: function(){
+  postSaved: function(article){
     return axios.post('/api/saved', article);
   },
-  deleteSaved: function(){
-    return axios.delete('api/saved');
+  deleteSaved: function(id){
+    return axios.delete('api/saved' + id);
   }
 };
 
