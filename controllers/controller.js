@@ -22,13 +22,17 @@ router.get('/api/saved', function(req, res){
 });
 
 router.post('/api/saved', function(req, res){
-  Article.create({
-    title: req.body.title,
-    date: Date.now(),
-    url: req.body.url
-  }, function(err){
-    if(err){console.log(err);}
-    else{res.send("Article is saved");}
+  var newArticle = new Article(req.body);
+
+  console.log(req.body);
+
+  newArticle.save(function(err, doc) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send(doc);
+    }
   });
 });
 

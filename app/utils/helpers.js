@@ -15,8 +15,12 @@ var helper= {
   getSaved: function(){
     return axios.get('/api/saved');
   },
-  postSaved: function(article){
-    return axios.post('/api/saved', {title: title, date: date, url: url});
+  postSaved: function(title, date, url){
+    return axios.post('/api/saved', {title: title, date: date, url: url})
+    .then(function(response) {
+        console.log("axios results", response.data._id);
+        return response.data._id;
+      });
   },
   deleteSaved: function(id){
     return axios.delete('api/saved/' + id);

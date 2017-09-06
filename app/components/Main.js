@@ -76,7 +76,6 @@ var Main = React.createClass({
         </div>
 
         <div className="row col s12">
-          <Saved saved={this.state.saved} />
         </div>
 
       </div>
