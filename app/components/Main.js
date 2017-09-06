@@ -15,7 +15,7 @@ var Main = React.createClass({
   getInitialState: function(){
     return{
       search: ["","",""],
-      results: [],
+      results: {},
       saved: []
     };
   },
@@ -33,12 +33,11 @@ var Main = React.createClass({
   },
   // updating as changes occur
   componentDidUpdate: function(){
-    console.log("Search Array" , this.state.search[0], this.state.search[1], this.state.search[2])
     // run query
     helpers.runQuery(this.state.search[0], this.state.search[1], this.state.search[2]).then(function(data){
-      if(data !== this.state.results) {
-        console.log("Results", data);
-        this.setState({ results: data });
+        console.log("Results", data.docs);
+        this.setState({ results: {docs: data.docs}});
+        console.log("results are saved to Main");
         // then post results to history
         helpers.postSaved(this.state.search).then(function(){
           console.log("Updated");
@@ -50,7 +49,6 @@ var Main = React.createClass({
 
           }.bind(this));
         }.bind(this));
-      }
     }.bind(this));
   },
   // lets children update parent
