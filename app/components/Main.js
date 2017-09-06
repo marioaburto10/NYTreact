@@ -7,7 +7,7 @@ var Results = require("./children/Results");
 var Saved = require("./children/Saved");
 
 // Requiring our helper for API calls
-var helpers = require("./utils/helpers");
+var helpers = require("../utils/helpers");
 
 // creating Main Component
 var Main = React.createClass({
@@ -33,8 +33,9 @@ var Main = React.createClass({
   },
   // updating as changes occur
   componentDidUpdate: function(){
+    console.log("Search Array" , this.state.search[0], this.state.search[1], this.state.search[2])
     // run query
-    helpers.runQuery(this.state.search).then(function(data){
+    helpers.runQuery(this.state.search[0], this.state.search[1], this.state.search[2]).then(function(data){
       if(data !== this.state.results) {
         console.log("Results", data);
         this.setState({ results: data });
@@ -54,6 +55,7 @@ var Main = React.createClass({
   },
   // lets children update parent
   setSearch: function(topic, startYear, endYear){
+    console.log("This is setSearch in Main" , topic, startYear, endYear)
     this.setState({ search: [topic, startYear, endYear] });
   },
   // render the function

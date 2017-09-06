@@ -2,7 +2,7 @@
 var React = require("react");
 
 // bring in helpers
-var helpers = require("../utils/helpers");
+var helpers = require("../../utils/helpers");
 
 // Creating the Saved component
 var Saved = React.createClass({

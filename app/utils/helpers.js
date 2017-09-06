@@ -1,8 +1,6 @@
 // require axios
 var axios = require("axios");
 
-
-
 var helper= {
   runQuery: function(topic, startYear, endYear){
     //NYT API key
@@ -10,10 +8,11 @@ var helper= {
     var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + APIkey + "&q="+ topic + "&begin_date=" + startYear + "0101" + "&end_date=" + endYear + "1231";
     return axios.get(queryURL).then(function(response){
       var results = [];
+      console.log("This is the api response" , response.data.response);
       // if there is a result, return it formatted properly
-      if (response.data.results[0]) {
+      if (response.data.response) {
         for(var i=0; i<5; i++) {
-          results.push(response.data.results[i].formatted);
+          results.push(response.data.response[i]);
         }
         return results;
       } else {

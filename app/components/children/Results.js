@@ -2,7 +2,7 @@
 var React = require("react");
 
 // bring in helpers
-var helpers = require("../utils/helpers");
+var helpers = require("../../utils/helpers");
 
 // Creating the Results component
 var Results = React.createClass({

@@ -13,19 +13,23 @@ var Search = React.createClass({
   },
   // responds to user input
   handleTopicChange: function(event){
+    console.log("change in topic text")
     this.setState({ topic: event.target.value });
   },
   handleStartChange: function(event){
+    console.log("change in start year text")
     this.setState({ startYear: event.target.value });
   },
-  handleEndChange: function(){
+  handleEndChange: function(event){
+    console.log("change in end year text")
     this.setState({ endYear: event.target.value });
   },
   // on submit function
-  handleSubmit: function(){
+  handleSubmit: function(event){
     event.preventDefault();
+    console.log("Form is being submit");
     //sends the parent the search parameters
-    this.props.setSearch(this.state.topic, this.state.startYear, this.state.endYear);
+    this.props.search(this.state.topic, this.state.startYear, this.state.endYear);
   },
   // render the function
   render: function(){
@@ -34,13 +38,13 @@ var Search = React.createClass({
         <h3 className="panelTitle">Search</h3>
         <form className="card-panel" onSubmit={this.handleSubmit} >
           <div className="input-field">
-            <input type="text" placeholder="Topic (required)" id="topic" onChange={this.handleTopicChange} className="validate" required></input>
+            <input type="text" value={this.state.search} placeholder="Topic (required)" id="topic" onChange={this.handleTopicChange} className="validate" required></input>
           </div>
           <div className="input-field">
-            <input type="number" maxLength="4" placeholder="Start Year (required)" id="startYear" onChange={this.handleStartChange} className="validate" required></input>
+            <input type="number" value={this.state.startYear} maxLength="4" placeholder="Start Year (required)" id="startYear" onChange={this.handleStartChange} className="validate" required></input>
           </div>
           <div className="input-field">
-            <input type="number" maxLength="4" placeholder="End Year (required)" id="endYear" onChange={this.handleEndChange} className="validate" required></input>
+            <input type="number" value={this.state.endYear} maxLength="4" placeholder="End Year (required)" id="endYear" onChange={this.handleEndChange} className="validate" required></input>
           </div>
           <br></br>
           <button className="waves-effect waves-light btn" type="submit">Submit</button>
