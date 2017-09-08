@@ -16,7 +16,7 @@ var Main = React.createClass({
     return{
       search: ["","",""],
       results: {},
-      saved: []
+      saved: ""
     };
   },
 
@@ -24,11 +24,8 @@ var Main = React.createClass({
   componentDidMount: function(){
     // using helper to get saved articles
     helpers.getSaved().then(function(response){
-      console.log(response);
-      if (response !== this.state.saved) {
-        console.log("Saved", response.data);
-        this.setState({ saved: response.data });
-      }
+      console.log("This is the response in Main coming from axios get saved" , response.data);
+        this.setState({ saved: { docs: response.data} });
     }.bind(this));
   },
   // updating as changes occur
@@ -39,16 +36,6 @@ var Main = React.createClass({
         this.setState({ results: {docs: data.docs}});
         console.log("results are saved to Main");
         // then post results to history
-        helpers.postSaved(this.state.search).then(function(){
-          console.log("Updated");
-          // then get updated history
-          helpers.getSaved().then(function(response){
-            console.log("Saved", response.data);
-
-            this.setState({ saved: response.data });
-
-          }.bind(this));
-        }.bind(this));
     }.bind(this));
   },
   // lets children update parent
@@ -76,6 +63,7 @@ var Main = React.createClass({
         </div>
 
         <div className="row col s12">
+          <Saved saved={this.state.saved} />
         </div>
 
       </div>

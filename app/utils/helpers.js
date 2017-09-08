@@ -1,7 +1,7 @@
 // require axios
 var axios = require("axios");
 
-var helper= {
+var helpers= {
   runQuery: function(topic, startYear, endYear){
     //NYT API key
     var APIkey= "0f42d9432843478c87c46da4dfbebcc0";
@@ -13,7 +13,11 @@ var helper= {
     });
   },
   getSaved: function(){
-    return axios.get('/api/saved');
+    return axios.get('/api/saved')
+    .then(function(results) {
+        console.log("axios results", results);
+        return results;
+    });
   },
   postSaved: function(title, date, url){
     return axios.post('/api/saved', {title: title, date: date, url: url})
@@ -23,8 +27,12 @@ var helper= {
       });
   },
   deleteSaved: function(id){
-    return axios.delete('api/saved/' + id);
+    return axios.delete('api/saved/' + id)
+    .then(function(results) {
+      console.log("axios results", results);
+      return results;
+    });
   }
 };
 
-module.exports = helper;
+module.exports = helpers;
