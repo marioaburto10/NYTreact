@@ -69,7 +69,7 @@ var Main = React.createClass({
         <div className="row">
           <div className="card-panel z-depth-4 panelTitle center-align">
             <h2>New York Times</h2>
-            <h4>Search for an article!</h4>
+            <h4>Search for any articles!</h4>
           </div>
         </div>
 
