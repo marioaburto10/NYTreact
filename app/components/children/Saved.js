@@ -14,6 +14,12 @@ var Saved = React.createClass({
     helpers.deleteSaved(articleID).then(function(response){
       console.log("Deleted article");
     }.bind(this));
+
+    helpers.getSaved().then(function(response){
+      console.log("This is the response in Saved coming from axios get saved" , response.data);
+          this.props.updateSavedFromSaved(response.data);
+          console.log("saved data has been passed back to Main from Saved")
+    }.bind(this));
   },
 
    // A helper method for mapping through our articles and outputting some HTML
@@ -81,7 +87,7 @@ var Saved = React.createClass({
           <li className="collection-item">
             <h4>
               <span>
-                <em>Please save your first article from results...</em>
+                <em>To see your saved articles, please save your first article from results...</em>
               </span>
             </h4>
           </li>

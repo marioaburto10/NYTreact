@@ -10,6 +10,14 @@ var Results = React.createClass({
     helpers.postSaved(article.headline.main, article.pub_date, article.web_url).then(function(response){
       console.log("Saved article");
     });
+
+    helpers.getSaved().then(function(response){
+      console.log("This is the response in Results coming from axios get saved" , response.data);
+        if (response.data[0]) {
+          this.props.updateSavedFromResults(response.data);
+          console.log("saved data has been passed back to Main")
+        }  
+    }.bind(this));
   },
 
    // A helper method for mapping through our articles and outputting some HTML

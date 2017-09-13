@@ -45,6 +45,23 @@ var Main = React.createClass({
     console.log("This is setSearch in Main" , topic, startYear, endYear)
     this.setState({ search: [topic, startYear, endYear] });
   },
+
+  // lets children update parent
+  updateSavedFromResults: function(newSavedArticles){
+    console.log("This is updateSavedFromResults in Main" , newSavedArticles)
+    this.setState({ saved: { docs: newSavedArticles} });
+  },
+
+  // lets children update parent
+  updateSavedFromSaved: function(newSavedArticles){
+    console.log("This is updateSavedFromSaved in Main" , newSavedArticles)
+    if (newSavedArticles[0]) {
+      this.setState({ saved: { docs: newSavedArticles} });
+    } else {
+      this.setState({ saved: "" });
+    }
+  },
+
   // render the function
   render: function(){
     return (
@@ -61,11 +78,11 @@ var Main = React.createClass({
         </div>
 
         <div className="row col s12">
-          <Results results={this.state.results} />
+          <Results updateSavedFromResults={this.updateSavedFromResults} results={this.state.results} />
         </div>
 
         <div className="row col s12">
-          <Saved saved={this.state.saved} />
+          <Saved updateSavedFromSaved={this.updateSavedFromSaved} saved={this.state.saved} />
         </div>
 
       </div>
