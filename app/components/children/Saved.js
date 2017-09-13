@@ -15,28 +15,6 @@ var Saved = React.createClass({
       console.log("Deleted article");
     }.bind(this));
   },
-  // render the function
-  // render0: function(){
-  //   return (
-  //     <div className="panel card z-depth-4 center-align">
-  //       <h3 className="panelTitle">Saved</h3>
-
-  //       <div>
-  //         {this.props.saved.map(function(search, i){
-  //           return(
-  //             <li key={search._id}>
-  //               <strong><a href={search.web_url} className="left-align" target="_blank">{search.title}</a></strong>
-  //                 <i> {search.pub_date.substring(0,10)}</i>
-  //               <span>
-  //                 <button className="waves-effect waves-light btn right-align" onClick={this.handleDelete} value={search._id}>Remove</button>
-  //               </span>
-  //             </li>
-  //           );
-  //         })}
-  //       </div>
-  //     </div>
-  //   );
-  // },
 
    // A helper method for mapping through our articles and outputting some HTML
   renderArticles: function() {
@@ -99,13 +77,15 @@ var Saved = React.createClass({
     // If we have no articles, render this HTML
     if (!this.props.saved) {
       return (
-        <li className="collection-item">
-          <h4>
-            <span>
-              <em>Please save your first article...</em>
-            </span>
-          </h4>
-        </li>
+        <ul>
+          <li className="collection-item">
+            <h4>
+              <span>
+                <em>Please save your first article from results...</em>
+              </span>
+            </h4>
+          </li>
+        </ul>
       );
     }
     // If we have articles, return this.renderContainer() which in turn, returns all the articles

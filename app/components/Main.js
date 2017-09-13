@@ -25,7 +25,9 @@ var Main = React.createClass({
     // using helper to get saved articles
     helpers.getSaved().then(function(response){
       console.log("This is the response in Main coming from axios get saved" , response.data);
-        this.setState({ saved: { docs: response.data} });
+        if (response.data[0]) {
+          this.setState({ saved: { docs: response.data} });
+        }  
     }.bind(this));
   },
   // updating as changes occur

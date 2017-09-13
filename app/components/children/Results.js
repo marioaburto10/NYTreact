@@ -73,13 +73,15 @@ var Results = React.createClass({
     // If we have no articles, render this HTML
     if (!this.props.results.docs) {
       return (
-        <li className="collection-item">
-          <h4>
-            <span>
-              <em>Enter search terms to begin...</em>
-            </span>
-          </h4>
-        </li>
+        <ul>
+          <li className="collection-item">
+            <h4>
+              <span>
+                <em>Enter search terms to see results...</em>
+              </span>
+            </h4>
+          </li>
+        </ul>
       );
     }
     // If we have articles, return this.renderContainer() which in turn, returns all the articles
